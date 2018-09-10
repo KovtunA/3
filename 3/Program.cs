@@ -7,41 +7,32 @@ namespace _3
         static void Main(string[] args)
         {
 
-                Console.WriteLine("enter your number a ");
-                int a = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("enter your number b ");
-                int b = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("enter your number c ");
-                int c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter your number a ");
+            int a = getNumber();
+            Console.WriteLine("enter your number b ");
+            int b = getNumber();
+            Console.WriteLine("enter your number c ");
+            int c = getNumber();
 
-                if (a > 0 & b > 0 & c > 0 )
-                {
-                    Console.WriteLine("Your result is " + (a + b + c));
-                }
-                else if (a < 0 & b > 0 & c > 0 )
-                {
-                    Console.WriteLine("Your result is " + (b + c));
-                }
-                else if (a > 0 & b < 0 & c > 0 )
-                {
-                    Console.WriteLine("Your result is " + (a + c));
-                }
-                else if (a > 0 & b > 0 & c < 0)
-                {
-                    Console.Write("Your result is  " + (a + b));
-                }
-            else if (a > 0 & b < 0 & c < 0)
+            int sum = 0;
+
+            if (a > 0) sum += a;
+            if (b > 0) sum += b;
+            if (c > 0) sum += c;
+
+            Console.WriteLine("Your result is " + sum);
+        }
+
+        private static Int32 getNumber()
+        {
+            string userInput = Console.ReadLine();
+
+            try { return Convert.ToInt32(userInput); }
+            catch
             {
-                Console.Write("Your result is  " + a);
-            }
-            else if (a < 0 & b > 0 & c < 0)
-            {
-                Console.Write("Your result is  " + b);
-            }
-            else if (a < 0 & b < 0 & c > 0)
-            {
-                Console.Write("Your result is  " + c);
+                Console.WriteLine("Invalid input, please try again");
+                return getNumber();
             }
         }
     }
-    }
+}
